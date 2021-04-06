@@ -1,0 +1,26 @@
+.conHow{
+justify-content: space-between;
+}
+.titleHow{
+     font-size: 3em;
+     font-weight: 700;
+}
+.imgHow{
+      width: 30em;
+      height: 30em;
+   
+      object-fit: contain;
+}
+.grid1{
+     
+      justify-content: center;
+      vertical-align: bottom;
+}
+.grid2{
+       text-align: end;
+}
+.titleHow2{
+       font-size: 1.5em;
+     font-weight: 700; 
+    justify-self: flex-end;
+}

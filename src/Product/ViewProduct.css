@@ -1,0 +1,55 @@
+.btnPar{
+  
+   
+      border-radius: 20px;
+      padding:10px;
+      justify-self: end;
+      vertical-align: bottom;
+    
+      cursor: pointer;
+      width: 10em;
+      background-color: #FC9904;
+      border:none;
+      color:white;
+   
+font-weight: bold;
+margin-top: 5vmax;
+
+}
+.imgProduct{
+      height: 30em;
+      width: 30em;
+      object-fit: contain;
+}
+.price{
+      color:red;
+      font-size: 3em;
+}
+.courant{
+      color:#FC9904;
+         font-size: 1.5em;
+         font-weight: bold;
+}
+.Title{
+      font-weight: bold;
+}
+.sousTitle{
+      font-weight: bolder;
+}
+.imgToken{
+      width: 30px;
+      height: 30px;
+}
+.tokenNumber{
+      font-weight: bold;
+      font-size:1.5em;
+      margin-left: 10px;
+  color:#FC9904;
+}
+.imgToken .tokenNumber{
+      display: flex;
+}
+.desc{
+      font-weight: 500;
+      line-height: 0.2vmax;
+}

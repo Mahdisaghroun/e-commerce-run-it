@@ -1,23 +1,22 @@
 import logo from './logo.svg';
-import './App.css';
-
+import './App.less'
+import CardProduct from './SvgExport/CardProduct';
+import LandingPage from './LandingPage/LandingPage'
+import Register from './Register/Register'
+//import Dashboard from './Dashbord/Dashboard';
+import { Container } from '@material-ui/core';
+import Client from './ProfileClient/Client';
+import ProductsPage from './RouterPages/ProductsPage';
+import Routers from './Router/Router';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+
+
+    <div className="App" id="App">
+      <Routers></Routers>
+
     </div>
   );
 }

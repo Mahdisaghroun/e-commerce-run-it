@@ -1,0 +1,76 @@
+.con{
+       margin-bottom: 5px;
+
+     position:fixed;
+     top:0;
+    margin-bottom: 50px;
+     overflow: hidden;
+      top: 0;
+      margin-top:0;
+  width: 100%;
+    z-index: 2;
+  background-color:#ffff;
+ transition:all 3s;
+ padding-bottom:20px;
+}
+
+.con_white{
+    
+   top:0;
+   
+    
+    z-index: 2;
+
+   
+}
+.input{
+   
+    width:0.6em;
+    margin-right: 3px;
+  border:none;
+   
+}
+.inputSearch1 input{
+ 
+     width: 100%;
+      
+    
+     
+   
+     
+}
+.linkTopBarNot{
+  color:black;
+  font-weight:500;
+  
+}
+.btn9{
+      margin-left: 5px;
+  background-color:#ffff;
+ border:none;
+ box-shadow: none;
+ overflow: hidden;
+ font-size: 15px;
+}
+.btn9:hover{
+      background-color: #FC9904;  
+}
+.btn9:active{
+  background-color: #FC9904;   
+}
+
+a{
+      font-size:10px;
+      color:white;
+}
+
+.searchInput{
+ 
+}
+.linkDrop{
+  color:black;
+  font-size:18px;
+  margin-bottom:20px;
+  text-align: center;
+
+}

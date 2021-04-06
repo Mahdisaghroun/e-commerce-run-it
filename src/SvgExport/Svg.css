@@ -1,0 +1,9 @@
+.svg{
+      cursor: pointer;
+}
+.svg :hover{
+     
+}
+.btn:active{
+      background-color: darkorange;
+}
