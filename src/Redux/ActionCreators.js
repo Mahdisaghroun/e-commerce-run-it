@@ -8,7 +8,7 @@ export const loadingAction = (Data) => {
 
 };
 export const Connecting = (data) => {
-    //localStorage.setItem('Connected', true);
+    localStorage.setItem('Connected', true);
     return {
         type: LOADING,
         payload: data

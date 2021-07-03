@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useMediaQuery } from 'react-responsive'
+import { registerService } from '../Services/AuthServices';
 export default function Register() {
+      const [username, setUsername] = useState()
+      const [email, setMail] = useState()
+      const [pass, setPass] = useState()
       const isDesktopOrLaptop = useMediaQuery({
             query: '(min-device-width: 1224px)'
       })
@@ -20,9 +24,9 @@ export default function Register() {
             <div
                   style={{
                         display: "flex",
-                      
+
                         paddingTop: '30vh',
-                       alignText:"center",
+                        alignText: "center",
                         flexDirection: "column",
                         justifyContent: "center",
 
@@ -31,11 +35,11 @@ export default function Register() {
             >
                   <h1
                         style={{
-                        alignSelf:"center"
-                  }}
+                              alignSelf: "center"
+                        }}
                   > Créer votre nouveau compte</h1>
                   <Form
-                        labelCol={{ span: 6}}
+                        labelCol={{ span: 6 }}
                         wrapperCol={{ span: 15 }}
                         layout="horizontal"
                         className="Form"
@@ -47,7 +51,7 @@ export default function Register() {
                               className="itemInput"
                         >
 
-                             
+
                         </Form.Item>
 
                         <Form.Item label="Nom d'utlisateur"
@@ -58,7 +62,9 @@ export default function Register() {
                               }]}
                         >
                               <Input
-
+                                    onChange={(e) => {
+                                          setUsername(e.target.value)
+                                    }}
                               />
                         </Form.Item>
                         <Form.Item label="Email"
@@ -67,7 +73,9 @@ export default function Register() {
                               rules={[{ required: true, message: 'Veuillez enter votre email' }]}
                         >
                               <Input
-
+                                    onChange={(e) => {
+                                          setMail(e.target.value)
+                                    }}
                               />
                         </Form.Item>
                         <Form.Item label="Mot de passe"
@@ -77,22 +85,29 @@ export default function Register() {
                         >
                               <Input.Password
                                     type="email"
-
+                                    onChange={(e) => {
+                                          setPass(e.target.value)
+                                    }}
                               />
                         </Form.Item>
                   </Form>
 
                   <Button type="primary" htmlType="submit"
-                       
+
                         style={{
                               alignSelf: "center",
-                            marginRight: isDesktopOrLaptop?'19%':0
-                              
+                              marginRight: isDesktopOrLaptop ? '19%' : 0
+
+                        }}
+                        onClick={() => {
+                              registerService(username, pass, email).then(res => {
+                                    window.location.replace('/')
+                              })
                         }}
                   >
                         S'inscrire
-                      
-        </Button>
+
+                  </Button>
 
             </div >
       )

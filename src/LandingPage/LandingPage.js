@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion"
 import './LandingPage.css'
 import { Grid, h2, Paper } from '@material-ui/core';
@@ -8,8 +8,39 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 //import HorizontalSlider from 'react-horizontal-slider'
 import Carousel from 'react-material-ui-carousel'
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
+import axios from 'axios';
 export default function LandingPage() {
+
+      const [productList, setProductList] = useState([])
+      useEffect(() => {
+            function fetching() {
+
+
+                  var config = {
+                        method: 'get',
+                        url: 'http://ed1f321ae5a3.ngrok.io/',
+                        headers: {
+                              'Content-Type': 'application/json'
+                        },
+
+                  };
+
+                  axios(config)
+                        .then(function (response) {
+                              setProductList([...productList, response.data])
+                              console.log(response.data)
+                        })
+                        .catch(function (error) {
+                              console.log(error);
+                        });
+
+
+
+            }
+            fetching()
+      }, [])
       function Item(props) {
+
             return (
                   <Paper style={{
                         height: 300,
@@ -86,7 +117,7 @@ export default function LandingPage() {
                         fontSize: 30,
                   }}>
                         Dernières ventes
-                        </h2>
+                  </h2>
                   <Grid xs={12}
                         container
                         direction="row"
@@ -140,36 +171,14 @@ export default function LandingPage() {
                         </Grid>
                   </Grid>
                   <Grid xs={12}>
-                        <ScrollMenu
-                              translate={-500}
-                              transition={2}
-                              innerWrapperStyle={{
-                                    border: "0px blue solid"
-                              }}
-                              innerWrapperClass="menu-item-wrapper"
-                              wrapperClass="menu-item-wrapper"
-                              data={
-                                    list.map((item, i) => <CardProduct key={i}></CardProduct>)
-                              }
-                              arrowRight={
-                                    <RightCircleOutlined style={{
-                                          fontSize: 30
-                                    }} />
-                              }
-                              arrowLeft={
-                                    <LeftCircleOutlined style={{
-                                          fontSize: 30
-                                    }} />
-                              }
 
-                        />
                   </Grid>
                   <h2 style={{
                         marginTop: 20,
                         fontSize: 30
                   }}>
                         Ne ratez pas votre chance !
-                        </h2>
+                  </h2>
                   <Grid container
                         fluid
                         justify="center"
@@ -179,96 +188,21 @@ export default function LandingPage() {
 
 
                   >
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
+                        {productList.map((prod, i) => (
+                              <Grid xs={12} md={4}
+                                    alignItems="center"
+                                    key={i}
+                              >
+                                    <motion.div
+                                          whileHover={{ scale: 1.1 }}
 
-                              ><CardProduct></CardProduct>
-                              </motion.div>
+                                    >
+                                          <CardProduct prod={prod}></CardProduct>
+                                    </motion.div>
 
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
+                              </Grid>
+                        ))}
 
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
                   </Grid>
                   <Grid xs={12}>
                         <h2 style={{
@@ -284,96 +218,25 @@ export default function LandingPage() {
                         xs={12}
 
                   >
-                        <Grid xs={12} md={4}
+
+
+                        {productList.map((prod, i) =>
+                        (<Grid xs={12} md={4}
+                              key={i}
                               alignItems="center"
                         >
                               <motion.div
                                     whileHover={{ scale: 1.1 }}
 
-                              ><CardProduct></CardProduct>
+                              >
+                                    <CardProduct prod={prod}></CardProduct>
                               </motion.div>
 
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
 
-                              ><CardProduct></CardProduct>
-                              </motion.div>
 
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
+                        </Grid>)
+                        )}
 
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
-                        <Grid xs={12} md={4}
-                              alignItems="center"
-                        >
-                              <motion.div
-                                    whileHover={{ scale: 1.1 }}
-
-                              ><CardProduct></CardProduct>
-                              </motion.div>
-
-                        </Grid>
                   </Grid>
             </div >
       )

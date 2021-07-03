@@ -13,12 +13,15 @@ import { CONNECTING } from '../Redux/Actions';
 import { Connecting, checkConnected } from '../Redux/ActionCreators';
 
 import { Link } from 'react-router-dom'
+import { loginService } from '../Services/AuthServices';
 function TopBar({ SetConnected }) {
       const history = useHistory();
       const { Search } = Input;
-      const [loading, setloading] = useState(false)
+      const [username, setUsername] = useState('')
+      const [pass, setPass] = useState('')
       const [text, settext] = useState("Se connecter")
       const [show, setshow] = useState(false)
+      const [loading, setloading] = useState(false)
       const transitionNavBar = () => {
             if (window.scrollY > 80) {
                   setshow(true)
@@ -89,6 +92,11 @@ function TopBar({ SetConnected }) {
 
                                     }}
                                     className="input"
+                                    onChange={
+                                          (E) => {
+                                                setUsername(E.target.value)
+                                          }
+                                    }
                               />
                               <Input size="large" placeholder="Mot de passe"
                                     style={{
@@ -96,6 +104,11 @@ function TopBar({ SetConnected }) {
                                     }}
                                     type="password"
                                     className="input"
+                                    onChange={
+                                          (e) => {
+                                                setPass(e.target.value)
+                                          }
+                                    }
                               />
                               <Button type="primary"
                                     size="large"
@@ -106,7 +119,14 @@ function TopBar({ SetConnected }) {
 
                                                 setloading(true)
                                                 settext("Connexion")
-                                                SetConnected()
+                                                loginService(username, pass).then(res => {
+                                                      SetConnected()
+                                                      setloading(false)
+                                                      settext("Connecté !")
+                                                      localStorage.setItem('tokenUser', res.headers.authorization)
+                                                      window.location.replace('/')
+                                                })
+
                                           }
                                     }
 
@@ -217,7 +237,7 @@ function TopBar({ SetConnected }) {
                                           }
                                     >S'inscrire
 
-                        </Button>
+                                    </Button>
 
                               </div>
 

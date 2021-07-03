@@ -51,7 +51,7 @@ export default function TopBarConnected() {
                         >
                               <UserOutlined />
                               Voir mon profile
-      </a>
+                        </a>
                   </Menu.Item>
 
                   <Menu.Item >
@@ -59,12 +59,16 @@ export default function TopBarConnected() {
 
                               <ShoppingOutlined />
                               Acheter jetons
-      </a>
+                        </a>
                   </Menu.Item>
-                  <Menu.Item danger>
+                  <Menu.Item danger onClick={() => {
+                        localStorage.clear()
+                        window.location.replace('/')
+                  }
+                  }>
                         <ExportOutlined />
                         Déconnexion</Menu.Item>
-            </Menu>
+            </Menu >
       );
 
       return (
@@ -135,7 +139,7 @@ export default function TopBarConnected() {
                                     }
                               >Devenir point de vente
 
-                        </Button>}
+                              </Button>}
 
 
                               <img src="poker-piece.png"
@@ -271,7 +275,7 @@ export default function TopBarConnected() {
                                           }
                                     >Devenir point de vente
 
-                        </Button>
+                                    </Button>
 
                               </div>
 

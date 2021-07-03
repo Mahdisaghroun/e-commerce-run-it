@@ -3,8 +3,10 @@ import './Svg.css'
 import { useHistory } from "react-router-dom";
 import ProgressBar from 'react-animated-progress-bar';
 export default function CardProduct(props) {
+      console.log(props.prod?.price)
       const history = useHistory();
       return (
+
 
             <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +83,8 @@ export default function CardProduct(props) {
                                     fontSize={13}
                                     fontFamily="SegoeUI, Segoe UI"
                               >
+
+
                                     <tspan x={0} y={0}>
                                           {"Mahdia"}
                                     </tspan>
@@ -94,9 +98,11 @@ export default function CardProduct(props) {
                                     fontWeight={700}
                               >
                                     <tspan x={0} y={0}>
-                                          {"350"}
+                                          {props.prod?.price}
                                     </tspan>
                               </text>
+
+
                               <text
                                     transform="translate(218 19)"
                                     fill="#fc0000"
